@@ -30,6 +30,7 @@
         "tags": [
           "My tag"
         ],
+        "x-internal": true,
         "parameters": [
           {
             "name": "a",
@@ -98,7 +99,8 @@
   },
   "tags": [
     {
-      "name": "My tag"
+      "name": "My tag",
+      "x-internal": true
     }
   ]
 }
