@@ -12,6 +12,7 @@ const TARGET_JSON_FILE = 'openapi.json';
 
 const srcDir = argv.src || argv.s || process.cwd();
 const outputDir = argv.output || argv.o || '.';
+const excludeDir = argv.excludeDir || argv.x;
 
 let mode = 'help';
 
@@ -22,11 +23,13 @@ if (argv.yaml || argv.y) {
 }
 switch (mode) {
   case 'yaml': {
-    fs.writeFileSync(path.join(srcDir, outputDir, TARGET_YAML_FILE), parseProject(srcDir));
+    fs.writeFileSync(path.join(srcDir, outputDir, TARGET_YAML_FILE),
+      parseProject(srcDir, excludeDir));
     break;
   }
   case 'json': {
-    generateJson(parseProject(srcDir), path.join(srcDir, outputDir, TARGET_JSON_FILE));
+    generateJson(parseProject(srcDir, excludeDir),
+      path.join(srcDir, outputDir, TARGET_JSON_FILE));
     break;
   }
   case 'help':
